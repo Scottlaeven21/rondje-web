@@ -1,0 +1,13 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rondje logo R in ring">
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="#7C3AED"/>
+
+  <!-- Ring = "rondje" -->
+  <circle cx="64" cy="64" r="37" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-opacity="0.4"/>
+
+  <!-- R-monogram in het midden, wit -->
+  <g stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M52 44 V84"/>
+    <path d="M52 46 H66 A12 12 0 0 1 66 70 H52"/>
+    <path d="M59 68 L78 84"/>
+  </g>
+</svg>

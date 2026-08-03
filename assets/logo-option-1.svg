@@ -1,0 +1,18 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rondje logo gesplitste cirkel">
+  <defs>
+    <linearGradient id="opt1Grad" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="0.55" stop-color="#9333EA"/>
+      <stop offset="1" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="url(#opt1Grad)"/>
+
+  <g>
+    <path d="M64 64 L66.79 24.10 A40 40 0 0 1 99.95 81.54 Z" fill="#FFFFFF"/>
+    <path d="M64 64 L97.16 86.37 A40 40 0 0 1 30.84 86.37 Z" fill="#FFFFFF" fill-opacity="0.78"/>
+    <path d="M64 64 L28.05 81.54 A40 40 0 0 1 61.21 24.10 Z" fill="#FFFFFF" fill-opacity="0.56"/>
+    <circle cx="64" cy="64" r="9" fill="url(#opt1Grad)"/>
+  </g>
+</svg>

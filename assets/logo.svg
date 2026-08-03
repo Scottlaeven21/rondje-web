@@ -1,0 +1,33 @@
+<svg width="360" height="96" viewBox="0 0 360 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rondje">
+  <defs>
+    <linearGradient id="rondjeGradH" x1="8" y1="12" x2="84" y2="84" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="0.55" stop-color="#9333EA"/>
+      <stop offset="1" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark -->
+  <g transform="translate(8,12) scale(0.5625)">
+    <rect x="0" y="0" width="128" height="128" rx="30" fill="url(#rondjeGradH)"/>
+    <g stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+      <g transform="rotate(-13 50 84)">
+        <path d="M37 44 H63 L59 84 H41 Z" fill="rgba(255,255,255,0.22)"/>
+        <path d="M40 66 H60" stroke-width="5"/>
+      </g>
+      <g transform="rotate(13 78 84)">
+        <path d="M65 44 H91 L87 84 H69 Z" fill="rgba(255,255,255,0.22)"/>
+        <path d="M68 66 H88" stroke-width="5"/>
+      </g>
+    </g>
+    <g stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round">
+      <path d="M64 30 V20"/>
+      <path d="M52 33 L46 25"/>
+      <path d="M76 33 L82 25"/>
+    </g>
+  </g>
+
+  <!-- Woordmerk -->
+  <text x="92" y="62" font-family="Poppins, 'Segoe UI', system-ui, -apple-system, sans-serif"
+        font-size="52" font-weight="800" letter-spacing="-1.5" fill="#0F172A">rondje</text>
+</svg>

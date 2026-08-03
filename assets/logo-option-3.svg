@@ -1,0 +1,18 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rondje logo euro ring">
+  <defs>
+    <linearGradient id="opt3Grad" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="0.55" stop-color="#9333EA"/>
+      <stop offset="1" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="url(#opt3Grad)"/>
+
+  <circle cx="64" cy="64" r="35" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-opacity="0.45"/>
+  <g stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M78 50 A19 19 0 1 0 78 78"/>
+    <path d="M47 59 H70"/>
+    <path d="M47 69 H66"/>
+  </g>
+</svg>

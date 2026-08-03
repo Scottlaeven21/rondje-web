@@ -1,0 +1,10 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rondje logo R">
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="#7C3AED"/>
+
+  <!-- Bold R-monogram, wit -->
+  <g stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M47 34 V94"/>
+    <path d="M47 37 H68 A18 18 0 0 1 68 73 H47"/>
+    <path d="M56 71 L86 94"/>
+  </g>
+</svg>

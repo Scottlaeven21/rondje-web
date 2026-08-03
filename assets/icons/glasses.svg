@@ -1,0 +1,13 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rondje geven" stroke="#7C3AED" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round">
+  <g transform="rotate(-12 8.6 15.5)">
+    <path d="M6 6.5H11L10.2 15H6.8Z" fill="rgba(124,58,237,0.14)"/>
+    <path d="M6.35 10.5H10.65"/>
+  </g>
+  <g transform="rotate(12 15.4 15.5)">
+    <path d="M13 6.5H18L17.2 15H13.8Z" fill="rgba(124,58,237,0.14)"/>
+    <path d="M13.35 10.5H17.65"/>
+  </g>
+  <path d="M12 4.6V2.4"/>
+  <path d="M9.6 5 8.2 3.2"/>
+  <path d="M14.4 5 15.8 3.2"/>
+</svg>

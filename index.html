@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rondje – Automatische groepsbetalingen</title>
+  <meta name="description" content="Hoe de groep uiteindelijk ook betaalt — Rondje regelt de verdeling automatisch. Voor vriendengroepen, café-avonden, voetbalteams en huisgenoten. Via iDEAL en SEPA." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rondje – Automatische groepsbetalingen" />
+  <meta property="og:description" content="Hoe de groep ook betaalt, Rondje verdeelt en int ieders deel automatisch. Geen schuldadministratie, geen gedeelde kaart." />
+  <meta property="og:url" content="https://rond-je.nl" />
+  <meta property="og:image" content="https://rond-je.nl/assets/logo-mark.svg" />
+  <meta name="theme-color" content="#7C3AED" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ─────────────────────────  NAV  ───────────────────────── -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="brand" aria-label="Rondje home">
+        <img class="brand__mark" src="assets/logo-mark.svg" alt="" width="38" height="38" />
+        <span class="brand__word">rondje</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Hoofdmenu">
+        <a href="#waarom">Waarom Rondje</a>
+        <a href="#voor-wie">Voor wie</a>
+        <a href="#hoe">Hoe het werkt</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav__actions">
+        <a href="#download" class="btn btn--primary btn--sm">Download de app</a>
+      </div>
+
+      <button class="nav__burger" id="burger" aria-label="Menu openen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="nav__mobile" id="navMobile" hidden>
+      <a href="#waarom">Waarom Rondje</a>
+      <a href="#voor-wie">Voor wie</a>
+      <a href="#hoe">Hoe het werkt</a>
+      <a href="#faq">FAQ</a>
+      <a href="#download" class="btn btn--primary">Download de app</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ─────────────────────────  HERO  ───────────────────────── -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="pill pill--icon"><img src="assets/icons/bolt.svg" alt="" width="16" height="16" /> Automatische groepsbetalingen</span>
+          <h1 class="hero__title">
+            HOE JULLIE OOK BETALEN,<br />
+            <span class="grad-text">RONDJE REGELT HET</span>
+          </h1>
+          <p class="hero__sub">
+            Geen schuldadministratie. Geen gedeelde kaart.
+            Rondje <strong>verdeelt en int</strong> ieders deel automatisch —
+            via iDEAL of SEPA, vanaf ieders eigen bankrekening.
+          </p>
+
+          <div class="hero__cta" id="download">
+            <a href="#" class="store-btn" aria-label="Download in de App Store">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.98-.84.94-2.2 1.66-3.34 1.57-.14-1.12.43-2.3 1.1-3.03.77-.85 2.12-1.5 3.36-1.52ZM20.9 17.02c-.6 1.39-.9 2.01-1.67 3.24-1.08 1.72-2.6 3.86-4.48 3.87-1.67.02-2.1-1.1-4.37-1.08-2.27.01-2.74 1.1-4.41 1.08-1.88-.02-3.32-1.95-4.4-3.67C-.9 15.94-1.2 9.9 1.65 6.7c.99-1.14 2.55-1.86 4.03-1.86 1.5 0 2.44 1.09 4.37 1.09 1.87 0 3-1.09 4.37-1.09 1.32 0 2.72.72 3.72 1.96-3.27 1.79-2.74 6.46.76 8.22Z"/></svg>
+              <span><small>Download in de</small><strong>App Store</strong></span>
+            </a>
+            <a href="#" class="store-btn" aria-label="Ontdek op Google Play">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.6 1.8c-.3.26-.47.66-.47 1.18v18.04c0 .52.17.92.48 1.18l.07.06L14 12.13v-.24L3.68 1.74l-.08.06ZM17.5 15.6l-3.4-3.4v-.24l3.4-3.4.08.05 4.03 2.29c1.15.65 1.15 1.72 0 2.38l-4.03 2.29-.08.03ZM17.42 15.55 13.9 12.02 3.6 22.32c.38.4 1 .45 1.72.05l12.1-6.82ZM17.42 8.49 5.32 1.67c-.72-.4-1.34-.35-1.72.05l10.3 10.3 3.52-3.53Z"/></svg>
+              <span><small>Ontdek op</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+
+          <div class="hero__trust">
+            <span class="dot dot--ideal">iDEAL</span>
+            <span class="dot dot--sepa">SEPA</span>
+            <span class="hero__trust-txt">Betalingen beveiligd via <strong>Stripe</strong></span>
+          </div>
+        </div>
+
+        <!-- Telefoon-mockup met een live rondje -->
+        <div class="hero__visual">
+          <div class="blob blob--1" aria-hidden="true"></div>
+          <div class="blob blob--2" aria-hidden="true"></div>
+
+          <div class="phone" aria-hidden="true">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="app">
+                <div class="app__top">
+                  <div>
+                    <p class="app__eyebrow">Café-avond · vrienden</p>
+                    <h3 class="app__title">Rondje De Zon</h3>
+                  </div>
+                  <div class="app__avatar"><img src="assets/icons/glasses.svg" alt="" width="20" height="20" /></div>
+                </div>
+
+                <div class="app__amount">
+                  <span>Totaal rondje</span>
+                  <strong>€ 48,00</strong>
+                </div>
+
+                <div class="app__row">
+                  <div class="mini-ava">R</div>
+                  <span class="app__name">Roosje</span>
+                  <span class="app__part">€ 12,00</span>
+                  <span class="chip chip--ok">Betaald</span>
+                </div>
+                <div class="app__row">
+                  <div class="mini-ava mini-ava--b">S</div>
+                  <span class="app__name">Scott</span>
+                  <span class="app__part">€ 12,00</span>
+                  <span class="chip chip--ok">Betaald</span>
+                </div>
+                <div class="app__row">
+                  <div class="mini-ava mini-ava--c">A</div>
+                  <span class="app__name">Aaron</span>
+                  <span class="app__part">€ 12,00</span>
+                  <span class="chip chip--ok">Betaald</span>
+                </div>
+
+                <div class="app__banner">
+                  <span class="app__check"><img src="assets/icons/check.svg" alt="" width="14" height="14" /></span>
+                  <div>
+                    <strong>Iedereen akkoord</strong>
+                    <small>Je krijgt € 36,00 terug — onderweg</small>
+                  </div>
+                </div>
+
+                <button class="app__btn">Nieuw rondje geven</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────  WAAROM / VOORDELEN  ───────────────────── -->
+    <section class="position" id="waarom">
+      <div class="container">
+        <span class="pill pill--center">Waarom Rondje</span>
+        <h2 class="section-title">NIET BIJHOUDEN. <span class="grad-text">AFHANDELEN.</span></h2>
+        <p class="section-lead">
+          Rondje maakt van "wie betaalt wat?" iets dat vanzelf gaat.
+          <strong>Jij regelt de avond — Rondje regelt de centen.</strong>
+        </p>
+
+        <div class="why__grid">
+          <article class="why-card">
+            <div class="why-card__icon why-card__icon--green"><img src="assets/icons/bolt.svg" alt="" width="26" height="26" /></div>
+            <h3>Je geld komt vanzelf terug</h3>
+            <p>Rondje gegeven? Iedereen betaalt <strong>automatisch</strong> zijn deel via de eigen bank — zonder dat jij één betaalverzoek stuurt. Voorschieten voelt ineens heel relaxed.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-card__icon why-card__icon--purple"><img src="assets/icons/friends.svg" alt="" width="26" height="26" /></div>
+            <h3>De groepsapp blijft gezellig</h3>
+            <p>Geen "heb je al betaald?" meer. Rondje haalt het geld-gezeur uit je vriendschappen — de groepsapp gaat weer over plannen en grapjes, niet over schulden.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-card__icon why-card__icon--orange"><img src="assets/icons/cafe.svg" alt="" width="26" height="26" /></div>
+            <h3>Voor elke dag</h3>
+            <p>Koffierun, AH-run, kroegavond, teamuitje. Overal waar iemand voorschiet is Rondje in een paar tikken geregeld — voor €4,50 net zo makkelijk als voor €450.</p>
+          </article>
+          <article class="why-card">
+            <div class="why-card__icon why-card__icon--lilac"><img src="assets/icons/split.svg" alt="" width="26" height="26" /></div>
+            <h3>Eerlijk tot op de cent</h3>
+            <p>Gelijk verdelen, per item van het bonnetje of op percentage. Iedereen ziet precies wat-ie bijdraagt — niemand betaalt stiekem te veel.</p>
+          </article>
+        </div>
+
+        <!-- Speels: de groepsapp vóór en mét Rondje -->
+        <div class="chatdemo">
+          <div class="chatdemo__panel chatdemo__panel--before" aria-label="Groepsapp zonder Rondje">
+            <p class="chatdemo__label">Groepsapp — zonder Rondje</p>
+            <div class="bubble bubble--in">Wie had er nou twee bier? 🍺</div>
+            <div class="bubble bubble--in">@Tim heb je m'n Tikkie al gezien?</div>
+            <div class="bubble bubble--out">oh ja sorry, doe ik vanavond echt</div>
+            <div class="bubble bubble--in">derde herinnering… €12 voor de pizza 🙃</div>
+          </div>
+          <div class="chatdemo__panel chatdemo__panel--after" aria-label="Groepsapp met Rondje">
+            <p class="chatdemo__label">Groepsapp — mét Rondje</p>
+            <div class="bubble bubble--in">Wat een avond 😂</div>
+            <div class="bubble bubble--out">Zelfde tijd volgende week?</div>
+            <div class="chatdemo__notify">
+              <span class="chatdemo__check"><img src="assets/icons/check.svg" alt="" width="13" height="13" /></span>
+              <div>
+                <strong>Rondje afgehandeld</strong>
+                <small>Iedereen heeft automatisch betaald</small>
+              </div>
+            </div>
+            <div class="bubble bubble--in">🔥 die app regelt het gewoon</div>
+          </div>
+        </div>
+
+        <p class="position__punch">
+          Jij geeft het rondje. <span class="grad-text">Wij regelen dat iedereen bijdraagt.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  VOOR WIE  ───────────────────────── -->
+    <section class="audiences" id="voor-wie">
+      <div class="container">
+        <span class="pill pill--center">Voor wie</span>
+        <h2 class="section-title">GEMAAKT VOOR <span class="grad-text">GROEPEN</span> DIE SAMEN UITGEVEN</h2>
+        <p class="section-lead">Niet voor boekhouding. Wel voor de momenten waarop jullie écht samen iets doen — en iemand de rekening schiet.</p>
+
+        <div class="audiences__grid">
+          <article class="audience">
+            <div class="audience__icon audience__icon--green"><img src="assets/icons/football.svg" alt="" width="28" height="28" /></div>
+            <h3>Voetbalteams &amp; clubs</h3>
+            <p>Contributie, nacompetitie-borrel, teamuitje of trainingskamp. Eén groep, iedereen betaalt zijn deel — zonder penningmeester-stress.</p>
+          </article>
+          <article class="audience">
+            <div class="audience__icon audience__icon--orange"><img src="assets/icons/cafe.svg" alt="" width="28" height="28" /></div>
+            <h3>Café-avonden &amp; borrels</h3>
+            <p>Vrijdagmiddag of “nog één rondje”: open een <strong>avondrekening</strong>, noteer per ronde, en reken aan het eind af — zonder vijf Tikkies.</p>
+          </article>
+          <article class="audience">
+            <div class="audience__icon audience__icon--purple"><img src="assets/icons/friends.svg" alt="" width="28" height="28" /></div>
+            <h3>Vriendengroepen</h3>
+            <p>Etentjes, festivals, weekendjes weg. De groepsapp blijft gezellig — het geld regelt zichzelf.</p>
+          </article>
+          <article class="audience">
+            <div class="audience__icon audience__icon--orange"><img src="assets/icons/home.svg" alt="" width="28" height="28" /></div>
+            <h3>Huisgenoten</h3>
+            <p>Boodschappen, schoonmaakmiddelen, de wekelijkse AH-run. Vast of eenmalig — altijd eerlijk verdeeld.</p>
+          </article>
+          <article class="audience">
+            <div class="audience__icon audience__icon--green"><img src="assets/icons/trip.svg" alt="" width="28" height="28" /></div>
+            <h3>Vakanties &amp; trips</h3>
+            <p>Airbnb, huurauto, restaurants. Geen Excel aan het eind van de week — onderweg al verrekend.</p>
+          </article>
+          <article class="audience">
+            <div class="audience__icon audience__icon--purple"><img src="assets/icons/team.svg" alt="" width="28" height="28" /></div>
+            <h3>Verenigingen &amp; teams</h3>
+            <p>Studentenvereniging, vrijwilligersgroep, projectteam. Collectief uitgeven zonder dat één persoon blijft voorliggen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  HOE HET WERKT (pad-scrollytelling)  ───────────────────────── -->
+    <section class="steps" id="hoe" data-journey>
+      <div class="container steps__intro">
+        <span class="pill pill--center">Hoe het werkt</span>
+        <h2 class="section-title">IN VIER TIKS GEREGELD</h2>
+        <p class="steps__lead">In vier stappen van groep naar betaald. Jij kiest en verdeelt — <strong>Rondje int ieders deel automatisch</strong>. Liever eerst alleen noteren of op rekening via een avondrekening? Dat kan ook.</p>
+      </div>
+
+      <div class="journey">
+        <svg class="journey__snake" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="journeyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7C3AED" />
+              <stop offset="55%" stop-color="#9333EA" />
+              <stop offset="100%" stop-color="#F97316" />
+            </linearGradient>
+            <!-- Clip groeit mee met scroll (betrouwbaarder dan dashoffset op uitgerekt SVG) -->
+            <clipPath id="journeyClip" clipPathUnits="userSpaceOnUse">
+              <rect id="journeyClipRect" x="-60" y="0" width="220" height="0" />
+            </clipPath>
+          </defs>
+          <path class="journey__snake-bg" d="M50 2
+            C 22 10, 22 18, 50 26
+            C 78 34, 78 42, 50 50
+            C 22 58, 22 66, 50 74
+            C 78 82, 78 90, 50 98" />
+          <path class="journey__snake-fill" id="journeyFill" clip-path="url(#journeyClip)" d="M50 2
+            C 22 10, 22 18, 50 26
+            C 78 34, 78 42, 50 50
+            C 22 58, 22 66, 50 74
+            C 78 82, 78 90, 50 98" />
+        </svg>
+
+        <ol class="journey__stops">
+          <li class="journey__stop journey__stop--a" data-step="1" id="tik-1">
+            <div class="journey__row">
+              <div class="journey__copy">
+                <h3><span class="journey__n">1.</span> GROEP</h3>
+                <p>Maak een groep voor je team, café-club of huisgenoten. Deel één link — iedereen zit erbij. Geen IBAN’s, geen nieuwe bankpas.</p>
+              </div>
+              <div class="journey__visual">
+                <div class="journey__ball">
+                  <img src="assets/icons/friends.svg" alt="" width="32" height="32" />
+                  <span class="journey__num">1</span>
+                </div>
+                <div class="journey__chips">
+                  <span>Voetbalteam</span>
+                  <span>Café-avond</span>
+                  <span>Huisgenoten</span>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="journey__stop journey__stop--b" data-step="2" id="tik-2">
+            <div class="journey__row">
+              <div class="journey__copy">
+                <h3><span class="journey__n">2.</span> KIES</h3>
+                <p>Schiet voor met een <strong>rondje</strong>, open een <strong>avondrekening</strong> (café, bar, restaurant), of <strong>noteer</strong> eerst alleen — en verreken later.</p>
+              </div>
+              <div class="journey__visual">
+                <div class="journey__ball">
+                  <img src="assets/icons/glasses.svg" alt="" width="32" height="32" />
+                  <span class="journey__num">2</span>
+                </div>
+                <ul class="path__tags">
+                  <li><img src="assets/icons/glasses.svg" alt="" width="14" height="14" /> Rondje</li>
+                  <li><img src="assets/icons/pot.svg" alt="" width="14" height="14" /> Avondrekening</li>
+                  <li><img src="assets/icons/note.svg" alt="" width="14" height="14" /> Noteren</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <li class="journey__stop journey__stop--a" data-step="3" id="tik-3">
+            <div class="journey__row">
+              <div class="journey__copy">
+                <h3><span class="journey__n">3.</span> VERDEEL</h3>
+                <p>Gelijk, op percentage of per item van het bonnetje. Iedereen ziet precies wat-ie bijdraagt — tot jullie afrekenen.</p>
+              </div>
+              <div class="journey__visual">
+                <div class="journey__ball">
+                  <img src="assets/icons/split.svg" alt="" width="32" height="32" />
+                  <span class="journey__num">3</span>
+                </div>
+                <div class="scrolly__split-demo" aria-hidden="true">
+                  <div><b>Sanne</b><i style="--w:33%"></i><span>€12</span></div>
+                  <div><b>Tom</b><i style="--w:33%"></i><span>€12</span></div>
+                  <div><b>Jip</b><i style="--w:34%"></i><span>€12</span></div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="journey__stop journey__stop--b journey__stop--final" data-step="4" id="tik-4">
+            <div class="journey__row">
+              <div class="journey__copy">
+                <span class="path__badge"><img src="assets/icons/bolt.svg" alt="" width="15" height="15" /> Automatisch</span>
+                <h3><span class="journey__n">4.</span> AFHANDELEN</h3>
+                <p>Zodra iedereen akkoord is, <strong>int Rondje ieders deel automatisch</strong> via iDEAL of SEPA — zonder Tikkies, zonder achter iemand aan te zitten. Jij hoeft niets meer te doen: <span class="grad-text">van akkoord naar betaald</span>.</p>
+              </div>
+              <div class="journey__visual">
+                <div class="journey__ball journey__ball--final">
+                  <img src="assets/icons/bolt.svg" alt="" width="32" height="32" />
+                  <span class="journey__num">4</span>
+                </div>
+                <div class="journey__chips">
+                  <span>Automatisch</span>
+                  <span>iDEAL / SEPA</span>
+                  <span>Klaar</span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  FUNCTIES  ───────────────────────── -->
+    <section class="features" id="functies">
+      <div class="container">
+        <span class="pill pill--center">Wat erbij komt</span>
+        <h2 class="section-title">GEBOUWD ROND <span class="grad-text">AFHANDELEN</span></h2>
+        <p class="section-lead">Alles wijst naar hetzelfde: ieders deel automatisch laten betalen — niet nóg een spreadsheet in je broekzak.</p>
+
+        <div class="features__grid">
+          <article class="feature">
+            <div class="feature__icon feature__icon--green"><img src="assets/icons/bolt.svg" alt="" width="28" height="28" /></div>
+            <h3>Automatisch geïncasseerd</h3>
+            <p>De kern van Rondje: na akkoord wordt ieders deel <strong>automatisch</strong> afgeschreven via iDEAL of SEPA. Geen Tikkies sturen, geen openstaande schuldjes najagen — het geld komt vanzelf binnen.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon feature__icon--purple"><img src="assets/icons/split.svg" alt="" width="28" height="28" /></div>
+            <h3>Verdelen zoals het past</h3>
+            <p>Gelijk, percentages of per item van het bonnetje. Tot op de cent — zodat de automatische betaling klopt, niet alleen de notitie.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon feature__icon--orange"><img src="assets/icons/receipt.svg" alt="" width="28" height="28" /></div>
+            <h3>Bonnetje scannen</h3>
+            <p>Fotografeer de kassabon; Rondje haalt items en totaal eruit. Minder typen, sneller naar de automatische incasso.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon feature__icon--purple"><img src="assets/icons/pot.svg" alt="" width="28" height="28" /></div>
+            <h3>Avondrekening — op rekening</h3>
+            <p>Voor café, bar of restaurant: houd de avond bij op rekening, rondje voor rondje. Bij afsluiten kies je wie heeft betaald — daarna int Rondje ieders deel automatisch.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon feature__icon--orange"><img src="assets/icons/recurring.svg" alt="" width="28" height="28" /></div>
+            <h3>Vaste rondjes</h3>
+            <p>Huur, streaming of wekelijkse boodschappen. Komt terug op schema — en wordt opnieuw automatisch verrekend.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon feature__icon--green"><img src="assets/icons/insights.svg" alt="" width="28" height="28" /></div>
+            <h3>Inzichten</h3>
+            <p>Zie per groep wie vaak voorlegt en wat er maandelijks omgaat — handig, geen administratie-app.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  TESTIMONIALS  ───────────────────────── -->
+    <section class="quotes">
+      <div class="container">
+        <h2 class="section-title">ZO VOELT HET IN DE <span class="grad-text">PRAKTIJK</span></h2>
+        <div class="quotes__grid">
+          <figure class="quote">
+            <div class="quote__stars" aria-label="5 van de 5 sterren"><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /></div>
+            <blockquote>Na de wedstrijd één rondje — en iedereen heeft betaald voordat we de kleedkamer uit zijn. Geen penningmeester-Tikkies meer.</blockquote>
+            <figcaption><span class="quote__ava">T</span> Tim · voetbalteam</figcaption>
+          </figure>
+          <figure class="quote">
+            <div class="quote__stars" aria-label="5 van de 5 sterren"><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /></div>
+            <blockquote>Café-avond: ik pin, Rondje int. De groepsapp blijft over de grapjes — niet over “heb je al betaald?”.</blockquote>
+            <figcaption><span class="quote__ava quote__ava--b">S</span> Sanne · vriendengroep</figcaption>
+          </figure>
+          <figure class="quote">
+            <div class="quote__stars" aria-label="5 van de 5 sterren"><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /><img src="assets/icons/star.svg" alt="" width="18" height="18" /></div>
+            <blockquote>Geen gedeelde kaart, geen schuldlijstjes. Gewoon: jij schiet voor, de rest volgt automatisch.</blockquote>
+            <figcaption><span class="quote__ava quote__ava--c">M</span> Mo · huisgenoten</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  VEILIGHEID  ───────────────────────── -->
+    <section class="secure" id="veilig">
+      <div class="container secure__inner">
+        <div class="secure__copy">
+          <span class="pill">100% veilig</span>
+          <h2 class="section-title section-title--left">JE GELD IN <span class="grad-text">VEILIGE HANDEN</span></h2>
+          <p class="section-lead section-lead--left">
+            Geen gedeelde kaart, geen wallet van ons. Betalingen lopen via Stripe vanaf
+            ieders eigen rekening — een van de meest vertrouwde betaalpartners van Europa.
+          </p>
+          <ul class="secure__list">
+            <li><span class="tick"><img src="assets/icons/check.svg" alt="" width="14" height="14" /></span> Betalingen verwerkt door <strong>Stripe</strong></li>
+            <li><span class="tick"><img src="assets/icons/check.svg" alt="" width="14" height="14" /></span> iDEAL &amp; SEPA-incasso met expliciete machtiging</li>
+            <li><span class="tick"><img src="assets/icons/check.svg" alt="" width="14" height="14" /></span> Niemand ziet jouw banksaldo — ook wij niet</li>
+            <li><span class="tick"><img src="assets/icons/check.svg" alt="" width="14" height="14" /></span> App-vergrendeling met Face ID / vingerafdruk</li>
+          </ul>
+        </div>
+        <div class="secure__badge" aria-hidden="true">
+          <div class="shield"><img src="assets/icons/shield.svg" alt="" width="96" height="96" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────  VERGELIJKING  ───────────────────── -->
+    <section class="versus" id="vergelijk">
+      <div class="container">
+        <span class="pill pill--center">Rondje vs. de rest</span>
+        <h2 class="section-title">WAAROM NIET GEWOON <span class="grad-text">EEN ANDERE APP?</span></h2>
+        <p class="section-lead">
+          Eerlijk is eerlijk: er zijn meer apps die iets met groepsgeld doen. Alleen stopt het daar
+          meestal bij <strong>bijhouden</strong> — en begint het echte gedoe pas. Zo verhoudt Rondje zich tot de rest.
+        </p>
+
+        <p class="versus__hint">Schuif opzij voor de hele vergelijking →</p>
+        <div class="versus__scroll">
+          <table class="versus__table">
+            <thead>
+              <tr>
+                <th scope="col"><span class="visually-hidden">Functie</span></th>
+                <th scope="col"><span class="versus__app">Bijhoud-apps</span><small>Splitwise &amp; co</small></th>
+                <th scope="col"><span class="versus__app">Gedeelde kaart</span><small>Cino &amp; co</small></th>
+                <th scope="col" class="versus__rondje"><span class="versus__app">Rondje</span><small>Automatische groepsbetalingen</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bijhouden wie wat betaalde</td>
+                <td><span class="mark mark--yes"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+                <td><span class="mark mark--yes"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+                <td class="versus__rondje"><span class="mark mark--yes mark--yes-strong"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+              </tr>
+              <tr>
+                <td>Het geld ook écht innen — automatisch</td>
+                <td><span class="mark mark--no" aria-label="nee">✕</span></td>
+                <td><span class="mark mark--part">alleen via hun pas</span></td>
+                <td class="versus__rondje"><span class="mark mark--yes mark--yes-strong"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+              </tr>
+              <tr>
+                <td>Werkt hoe jullie ook betalen (cash, pin, iDEAL)</td>
+                <td><span class="mark mark--no" aria-label="nee">✕</span></td>
+                <td><span class="mark mark--no" aria-label="nee">✕</span></td>
+                <td class="versus__rondje"><span class="mark mark--yes mark--yes-strong"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+              </tr>
+              <tr>
+                <td>Geen nieuwe pas, wallet of tegoed nodig</td>
+                <td><span class="mark mark--yes"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+                <td><span class="mark mark--no" aria-label="nee">✕</span></td>
+                <td class="versus__rondje"><span class="mark mark--yes mark--yes-strong"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+              </tr>
+              <tr>
+                <td>Avondrekening in café of restaurant</td>
+                <td><span class="mark mark--no" aria-label="nee">✕</span></td>
+                <td><span class="mark mark--no" aria-label="nee">✕</span></td>
+                <td class="versus__rondje"><span class="mark mark--yes mark--yes-strong"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+              </tr>
+              <tr>
+                <td>Bonnetje scannen &amp; per item verdelen</td>
+                <td><span class="mark mark--part">beperkt</span></td>
+                <td><span class="mark mark--no" aria-label="nee">✕</span></td>
+                <td class="versus__rondje"><span class="mark mark--yes mark--yes-strong"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+              </tr>
+              <tr>
+                <td>Klaar zonder na-appen of herinneringen</td>
+                <td><span class="mark mark--no" aria-label="nee">✕</span></td>
+                <td><span class="mark mark--part">binnen hun pas</span></td>
+                <td class="versus__rondje"><span class="mark mark--yes mark--yes-strong"><img src="assets/icons/check.svg" alt="ja" width="12" height="12" /></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="versus__note">
+          Rondje vervangt je bank niet — het regelt wat er <strong>tussen jullie</strong> gebeurt:
+          verdelen, akkoord en automatisch afrekenen via ieders eigen rekening.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  FAQ  ───────────────────────── -->
+    <section class="faq" id="faq">
+      <div class="container container--narrow">
+        <span class="pill pill--center">FAQ</span>
+        <h2 class="section-title">VEELGESTELDE VRAGEN</h2>
+
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary>Wat is Rondje precies?</summary>
+            <p>Rondje is voor <strong>automatische groepsbetalingen</strong>. Iemand geeft een rondje (schiet voor), de groep keurt de verdeling goed, en Rondje int ieders deel via iDEAL of SEPA. Geen schuldadministratie, geen gedeelde kaart — gewoon afhandelen.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Waarom niet gewoon Cino of Splitwise?</summary>
+            <p><strong>Splitwise</strong> is sterk in kosten bijhouden — “wie is wie nog schuldig?”. Betalen blijft vaak handwerk. <strong>Cino</strong> hangt aan een gedeelde kaart en hun infrastructuur. <strong>Rondje</strong> zit ertussenin: hoe jullie ook betalen, wij regelen de verdeling en de echte betaling via ieders eigen bank.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Voor wie is Rondje bedoeld?</summary>
+            <p>Voor groepen die vaak samen uitgeven: vriendengroepen, café-avonden, voetbalteams, huisgenoten, vakanties en verenigingen. Overal waar iemand voorlegt en de rest moet meebetalen.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Kan ik ook alleen noteren, zonder meteen te betalen?</summary>
+            <p>Ja. Je kunt een uitgave eerst <strong>noteren</strong> en later verrekenen. Of open een <strong>avondrekening</strong> (café, bar, restaurant): houd per ronde bij wat erbij komt, en bij afsluiten kies je wie heeft betaald. Daarna int Rondje ieders deel automatisch.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Waarvoor is een avondrekening?</summary>
+            <p>Een avondrekening is bedoeld voor gelegenheden <strong>op rekening</strong> — bijvoorbeeld een café-avond of etentje. Je houdt de avond bij (rondjes, drankjes, notities), sluit af wanneer jullie klaar zijn, en Rondje verrekent ieders deel automatisch via iDEAL of SEPA.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Moet ik een speciale kaart of geld opladen?</summary>
+            <p>Nee. Geen Rondje-pas, geen wallet. Je gebruikt je eigen bankrekening. Er wordt alleen jouw deel van een rondje afgeschreven.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Kunnen mijn vrienden mijn bankrekening zien?</summary>
+            <p>Nooit. Je saldo en andere transacties blijven privé. Anderen zien alleen het rondje waar ze zelf aan meedoen.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Wat als ik het niet eens ben met een rondje?</summary>
+            <p>Je kunt een bezwaar indienen voordat er iets wordt afgeschreven. Pas als iedereen akkoord is, wordt er verrekend.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Wat kost Rondje?</summary>
+            <p>De app is gratis te gebruiken voor je groepen. Per verrekend rondje rekenen we een kleine, transparante servicevergoeding voor de betaalverwerking.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────  FINAL CTA  ───────────────────────── -->
+    <section class="cta">
+      <div class="container cta__inner">
+        <h2 class="cta__title">KLAAR OM DE GROEP <span class="grad-text-light">AUTOMATISCH</span> TE LATEN BETALEN?</h2>
+        <p>Download Rondje — voor je team, je café-club of je huisgenoten.</p>
+        <div class="hero__cta hero__cta--center">
+          <a href="#" class="store-btn store-btn--dark">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.98-.84.94-2.2 1.66-3.34 1.57-.14-1.12.43-2.3 1.1-3.03.77-.85 2.12-1.5 3.36-1.52ZM20.9 17.02c-.6 1.39-.9 2.01-1.67 3.24-1.08 1.72-2.6 3.86-4.48 3.87-1.67.02-2.1-1.1-4.37-1.08-2.27.01-2.74 1.1-4.41 1.08-1.88-.02-3.32-1.95-4.4-3.67C-.9 15.94-1.2 9.9 1.65 6.7c.99-1.14 2.55-1.86 4.03-1.86 1.5 0 2.44 1.09 4.37 1.09 1.87 0 3-1.09 4.37-1.09 1.32 0 2.72.72 3.72 1.96-3.27 1.79-2.74 6.46.76 8.22Z"/></svg>
+            <span><small>Download in de</small><strong>App Store</strong></span>
+          </a>
+          <a href="#" class="store-btn store-btn--dark">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.6 1.8c-.3.26-.47.66-.47 1.18v18.04c0 .52.17.92.48 1.18l.07.06L14 12.13v-.24L3.68 1.74l-.08.06ZM17.5 15.6l-3.4-3.4v-.24l3.4-3.4.08.05 4.03 2.29c1.15.65 1.15 1.72 0 2.38l-4.03 2.29-.08.03ZM17.42 15.55 13.9 12.02 3.6 22.32c.38.4 1 .45 1.72.05l12.1-6.82ZM17.42 8.49 5.32 1.67c-.72-.4-1.34-.35-1.72.05l10.3 10.3 3.52-3.53Z"/></svg>
+            <span><small>Ontdek op</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─────────────────────────  FOOTER  ───────────────────────── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="brand brand--light" aria-label="Rondje home">
+          <img class="brand__mark" src="assets/logo-mark.svg" alt="" width="34" height="34" />
+          <span class="brand__word">rondje</span>
+        </a>
+        <p>Automatische groepsbetalingen.</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#waarom">Waarom Rondje</a>
+        <a href="#voor-wie">Voor wie</a>
+        <a href="#hoe">Hoe het werkt</a>
+        <a href="#faq">FAQ</a>
+        <a href="privacy.html">Privacybeleid</a>
+        <a href="terms.html">Voorwaarden</a>
+        <a href="mailto:hallo@rond-je.nl">Contact</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p>© 2026 Rondje · rond-je.nl · Betalingen verwerkt door Stripe</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
