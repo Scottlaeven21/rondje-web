@@ -1154,8 +1154,18 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 620px) {
-  .features__grid, .quotes__grid { grid-template-columns: 1fr; }
-  /* Voor wie + Waarom + WhatsApp-demo: 2 naast elkaar op mobiel */
+  .quotes__grid { grid-template-columns: 1fr; }
+  /* Voor wie + Waarom + Wat erbij + WhatsApp-demo: 2 naast elkaar op mobiel */
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .feature { padding: 16px 12px; }
+  .feature__icon { width: 42px; height: 42px; border-radius: 12px; margin-bottom: 10px; }
+  .feature__icon img { width: 22px; height: 22px; }
+  .feature h3 { font-size: .95rem; }
+  .feature p { font-size: .82rem; line-height: 1.5; }
   .audiences__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
