@@ -882,7 +882,6 @@ img { display: block; max-width: 100%; }
   .journey__stop--a .journey__visual,
   .journey__stop--b .journey__copy,
   .journey__stop--b .journey__visual { grid-column: auto; }
-  .journey__visual { order: -1; }
   .journey__stop--a .journey__copy,
   .journey__stop--b .journey__copy { padding-inline: 0; }
   /* Bollen op de bochten van één pad binnen het scherm (links / rechts) */
