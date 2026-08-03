@@ -55,62 +55,12 @@
     if (!root) return;
 
     var stops = Array.prototype.slice.call(root.querySelectorAll('.journey__stop'));
-    var journey = root.querySelector('.journey');
     var snake = root.querySelector('.journey__snake');
     var clipRect = document.getElementById('journeyClipRect');
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var mobileMq = window.matchMedia('(max-width: 720px)');
     var active = 0;
 
-    // Camera X in vw per stap: 1 midden → 2 hard rechts → 3 hard links → 4 midden
-    var CAM_VW = [0, 0, -58, 52, 0];
-
-    function lerp(a, b, t) {
-      return a + (b - a) * t;
-    }
-    function smoothstep(t) {
-      t = Math.max(0, Math.min(1, t));
-      return t * t * (3 - 2 * t);
-    }
-
-    /** Float 1..4 op basis van scroll vs bolposities */
-    function journeyProgress() {
-      var focusY = window.innerHeight * 0.42;
-      var mids = stops.map(function (stop) {
-        var ball = stop.querySelector('.journey__ball');
-        if (!ball) return focusY;
-        var r = ball.getBoundingClientRect();
-        return r.top + r.height / 2;
-      });
-      if (focusY <= mids[0]) return 1;
-      var last = mids.length - 1;
-      if (focusY >= mids[last]) return last + 1;
-      for (var i = 0; i < last; i++) {
-        if (focusY >= mids[i] && focusY <= mids[i + 1]) {
-          var t = (focusY - mids[i]) / Math.max(mids[i + 1] - mids[i], 1);
-          return (i + 1) + smoothstep(t);
-        }
-      }
-      return 1;
-    }
-
-    function applyCamera(p) {
-      if (!journey) return;
-      if (!mobileMq.matches || reduceMotion) {
-        journey.style.setProperty('--journey-cam', '0px');
-        return;
-      }
-      var i0 = Math.floor(p);
-      var i1 = Math.min(i0 + 1, 4);
-      var t = p - i0;
-      var c0 = CAM_VW[i0] != null ? CAM_VW[i0] : 0;
-      var c1 = CAM_VW[i1] != null ? CAM_VW[i1] : 0;
-      var vw = lerp(c0, c1, t);
-      journey.style.setProperty('--journey-cam', vw.toFixed(2) + 'vw');
-    }
-
-    // Zelfde kronkelvorm als origineel (bochten op x=29/71), maar de hoogte
-    // van elke bocht schuift mee met de werkelijke positie van de bol.
+    // Zelfde kronkelvorm overal: bochten op x=29/71, hoogte volgt de bollen.
     function fitPath() {
       if (!snake) return;
       var bg = snake.querySelector('.journey__snake-bg');
@@ -127,53 +77,14 @@
       }).filter(function (v) { return v !== null; });
       if (ys.length < 2) return;
 
-      // Mobiel: de bollen staan zelf zijwaarts (2 rechts, 3 links uit beeld);
-      // de lijn loopt vloeiend door de echte bolposities, met verticale
-      // raaklijn op elke bol zodat het pad de blik meeneemt.
-      if (window.matchMedia('(max-width: 720px)').matches) {
-        var pts = stops.map(function (stop) {
-          var ball = stop.querySelector('.journey__ball');
-          if (!ball) return null;
-          var r = ball.getBoundingClientRect();
-          return {
-            x: ((r.left + r.width / 2) - box.left) / box.width * 100,
-            y: ((r.top + r.height / 2) - box.top) / box.height * 100,
-          };
-        }).filter(function (p) { return p !== null; });
-        if (pts.length < 2) return;
-
-        var p0 = pts[0];
-        var dm = 'M' + p0.x.toFixed(1) + ' 0 C ' +
-          p0.x.toFixed(1) + ' ' + (p0.y / 3).toFixed(1) + ', ' +
-          p0.x.toFixed(1) + ' ' + (2 * p0.y / 3).toFixed(1) + ', ' +
-          p0.x.toFixed(1) + ' ' + p0.y.toFixed(1);
-        for (var m = 0; m < pts.length - 1; m++) {
-          var a = pts[m];
-          var b = pts[m + 1];
-          var mdy = b.y - a.y;
-          dm += ' C ' + a.x.toFixed(1) + ' ' + (a.y + mdy / 3).toFixed(1) +
-                ', ' + b.x.toFixed(1) + ' ' + (a.y + 2 * mdy / 3).toFixed(1) +
-                ', ' + b.x.toFixed(1) + ' ' + b.y.toFixed(1);
-        }
-        var pl = pts[pts.length - 1];
-        dm += ' C ' + pl.x.toFixed(1) + ' ' + (pl.y + (100 - pl.y) / 3).toFixed(1) +
-              ', ' + pl.x.toFixed(1) + ' ' + (pl.y + 2 * (100 - pl.y) / 3).toFixed(1) +
-              ', ' + pl.x.toFixed(1) + ' 100';
-        bg.setAttribute('d', dm);
-        fill.setAttribute('d', dm);
-        return;
-      }
-
-      // Midden-kruisingen halverwege tussen de bochten; bochten exact op de bollen
       var bounds = [Math.max(0, ys[0] - (ys[1] - ys[0]) / 2)];
       for (var i = 1; i < ys.length; i++) bounds.push((ys[i - 1] + ys[i]) / 2);
       bounds.push(Math.min(100, ys[ys.length - 1] + (ys[ys.length - 1] - ys[ys.length - 2]) / 2));
 
       var d = 'M50 ' + bounds[0].toFixed(1);
       for (var s = 0; s < ys.length; s++) {
-        var ext = s % 2 === 0 ? 29 : 71;   // bochtdiepte gelijk aan het origineel
+        var ext = s % 2 === 0 ? 29 : 71;
         var mid = s % 2 === 0 ? 36 : 64;
-        // Naar de bol toe (verticale raaklijn op de bol) en weer terug naar het midden
         d += ' C ' + mid + ' ' + (bounds[s] + (ys[s] - bounds[s]) / 3).toFixed(1) +
              ', ' + ext + ' ' + (bounds[s] + 2 * (ys[s] - bounds[s]) / 3).toFixed(1) +
              ', ' + ext + ' ' + ys[s].toFixed(1);
@@ -213,9 +124,22 @@
     }
 
     function focusFromScroll() {
-      var p = journeyProgress();
-      applyCamera(p);
-      setFocus(Math.round(p));
+      var focusY = window.innerHeight * 0.42;
+      var best = 1;
+      var bestDist = Infinity;
+      stops.forEach(function (stop) {
+        var n = Number(stop.getAttribute('data-step'));
+        var ball = stop.querySelector('.journey__ball');
+        if (!ball) return;
+        var r = ball.getBoundingClientRect();
+        var mid = r.top + r.height / 2;
+        var dist = Math.abs(mid - focusY);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = n;
+        }
+      });
+      setFocus(best);
       progressFill();
     }
 

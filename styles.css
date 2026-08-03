@@ -710,8 +710,7 @@ img { display: block; max-width: 100%; }
   place-items: center;
   position: relative;
   z-index: 2;
-  /* --ball-shift: zijwaartse positie op mobiel (bol 2 rechts, bol 3 links) */
-  transform: translateX(var(--ball-shift, 0px)) scale(.88);
+  transform: scale(.88);
   opacity: .55;
   transition:
     transform .5s cubic-bezier(.22, 1, .36, 1),
@@ -743,7 +742,7 @@ img { display: block; max-width: 100%; }
 }
 
 .journey__stop.is-focus .journey__ball {
-  transform: translateX(var(--ball-shift, 0px)) scale(1.08);
+  transform: scale(1.08);
   opacity: 1;
   background: var(--grad);
   border-color: transparent;
@@ -757,7 +756,7 @@ img { display: block; max-width: 100%; }
   filter: brightness(0) invert(1);
 }
 .journey__stop.is-done .journey__ball {
-  transform: translateX(var(--ball-shift, 0px)) scale(1);
+  transform: scale(1);
   opacity: 1;
   background: #EDE9FE;
   border-color: #A78BFA;
@@ -874,20 +873,9 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 720px) {
-  /* Camera-pan: journey schuift horizontaal mee met de lijn (JS zet --journey-cam) */
-  .steps {
-    overflow-x: clip;
-  }
-  .journey {
-    --journey-cam: 0px;
-    transform: translate3d(var(--journey-cam), 0, 0);
-    will-change: transform;
-    max-width: none;
-    width: 100%;
-  }
   .journey__row {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 18px;
     text-align: center;
   }
   .journey__stop--a .journey__copy,
@@ -897,20 +885,22 @@ img { display: block; max-width: 100%; }
   .journey__visual { order: -1; }
   .journey__stop--a .journey__copy,
   .journey__stop--b .journey__copy { padding-inline: 0; }
-  .journey__stop--a .journey__visual { padding-left: 0; }
-  .journey__stop--b .journey__visual { padding-right: 0; }
-  /* Pad kronkelt ver buiten het scherm; camera volgt (1→rechts, 3→links, 4→midden) */
-  .journey__stop[data-step="1"] { --ball-shift: 0px; }
-  .journey__stop[data-step="2"] { --ball-shift: min(46vw, 200px); }
-  .journey__stop[data-step="3"] { --ball-shift: max(-46vw, -200px); }
-  .journey__stop[data-step="4"] { --ball-shift: 0px; }
+  /* Bollen op de bochten van één pad binnen het scherm (links / rechts) */
+  .journey__stop--a .journey__visual {
+    align-items: flex-start;
+    padding-left: max(4%, calc(22% - 40px));
+  }
+  .journey__stop--b .journey__visual {
+    align-items: flex-end;
+    padding-right: max(4%, calc(22% - 40px));
+  }
   .journey__copy h3 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
   .journey__ball { width: 80px; height: 80px; }
   .journey__ball img { width: 30px; height: 30px; }
   .journey__snake { opacity: .72; }
   .journey__snake-bg,
   .journey__snake-fill { stroke-width: 12; }
-  .journey__stops { gap: 72px; }
+  .journey__stops { gap: 64px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -919,7 +909,7 @@ img { display: block; max-width: 100%; }
   .journey__snake-fill,
   .scrolly__split-demo i::after { transition: none !important; animation: none !important; }
   .journey__stop { opacity: 1; transform: none; }
-  .journey__ball { opacity: 1; transform: translateX(var(--ball-shift, 0px)); }
+  .journey__ball { opacity: 1; transform: none; }
 }
 
 /* ─────────────────────────  FEATURES  ───────────────────────── */
