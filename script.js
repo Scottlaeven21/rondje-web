@@ -55,10 +55,59 @@
     if (!root) return;
 
     var stops = Array.prototype.slice.call(root.querySelectorAll('.journey__stop'));
+    var journey = root.querySelector('.journey');
     var snake = root.querySelector('.journey__snake');
     var clipRect = document.getElementById('journeyClipRect');
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var mobileMq = window.matchMedia('(max-width: 720px)');
     var active = 0;
+
+    // Camera X in vw per stap: 1 midden → 2 hard rechts → 3 hard links → 4 midden
+    var CAM_VW = [0, 0, -58, 52, 0];
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+    function smoothstep(t) {
+      t = Math.max(0, Math.min(1, t));
+      return t * t * (3 - 2 * t);
+    }
+
+    /** Float 1..4 op basis van scroll vs bolposities */
+    function journeyProgress() {
+      var focusY = window.innerHeight * 0.42;
+      var mids = stops.map(function (stop) {
+        var ball = stop.querySelector('.journey__ball');
+        if (!ball) return focusY;
+        var r = ball.getBoundingClientRect();
+        return r.top + r.height / 2;
+      });
+      if (focusY <= mids[0]) return 1;
+      var last = mids.length - 1;
+      if (focusY >= mids[last]) return last + 1;
+      for (var i = 0; i < last; i++) {
+        if (focusY >= mids[i] && focusY <= mids[i + 1]) {
+          var t = (focusY - mids[i]) / Math.max(mids[i + 1] - mids[i], 1);
+          return (i + 1) + smoothstep(t);
+        }
+      }
+      return 1;
+    }
+
+    function applyCamera(p) {
+      if (!journey) return;
+      if (!mobileMq.matches || reduceMotion) {
+        journey.style.setProperty('--journey-cam', '0px');
+        return;
+      }
+      var i0 = Math.floor(p);
+      var i1 = Math.min(i0 + 1, 4);
+      var t = p - i0;
+      var c0 = CAM_VW[i0] != null ? CAM_VW[i0] : 0;
+      var c1 = CAM_VW[i1] != null ? CAM_VW[i1] : 0;
+      var vw = lerp(c0, c1, t);
+      journey.style.setProperty('--journey-cam', vw.toFixed(2) + 'vw');
+    }
 
     // Zelfde kronkelvorm als origineel (bochten op x=29/71), maar de hoogte
     // van elke bocht schuift mee met de werkelijke positie van de bol.
@@ -164,21 +213,9 @@
     }
 
     function focusFromScroll() {
-      var focusY = window.innerHeight * 0.45;
-      var best = 1;
-      var bestDist = Infinity;
-      stops.forEach(function (stop) {
-        var ball = stop.querySelector('.journey__ball');
-        if (!ball) return;
-        var rect = ball.getBoundingClientRect();
-        var mid = rect.top + rect.height / 2;
-        var dist = Math.abs(mid - focusY);
-        if (dist < bestDist) {
-          bestDist = dist;
-          best = Number(stop.getAttribute('data-step'));
-        }
-      });
-      setFocus(best);
+      var p = journeyProgress();
+      applyCamera(p);
+      setFocus(Math.round(p));
       progressFill();
     }
 
