@@ -1187,12 +1187,9 @@ img { display: block; max-width: 100%; }
   .why-card h3 { font-size: .95rem; }
   .why-card p { font-size: .82rem; line-height: 1.5; }
   .chatdemo {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
-  .chatdemo__panel { padding: 14px 10px; }
-  .chatdemo__label { font-size: .72rem; }
-  .bubble { font-size: .78rem; padding: 8px 10px; }
   /* Veiligheid-sectie: kleiner schild en strakkere afstanden */
   .secure__inner { gap: 30px; }
   .secure__list li { font-size: .98rem; align-items: flex-start; }
