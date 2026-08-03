@@ -56,51 +56,56 @@
 
     var stops = Array.prototype.slice.call(root.querySelectorAll('.journey__stop'));
     var snake = root.querySelector('.journey__snake');
-    var clipRect = document.getElementById('journeyClipRect');
+    var fill = document.getElementById('journeyFill');
+    var bg = snake ? snake.querySelector('.journey__snake-bg') : null;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var active = 0;
+    var pathLen = 0;
+    var currentPct = 0;
+    var targetPct = 0;
+    var smoothing = false;
+    var resizeTimer = 0;
 
-    // Zelfde kronkelvorm overal: bochten op x=29/71, hoogte volgt de bollen.
+    // Padvorm vastzetten t.o.v. stops (niet opnieuw bij bol-scale → geen haperen)
     function fitPath() {
-      if (!snake) return;
-      var bg = snake.querySelector('.journey__snake-bg');
-      var fill = snake.querySelector('.journey__snake-fill');
-      if (!bg || !fill) return;
+      if (!snake || !bg || !fill) return;
       var box = snake.getBoundingClientRect();
       if (box.height < 10) return;
 
       var ys = stops.map(function (stop) {
-        var ball = stop.querySelector('.journey__ball');
-        if (!ball) return null;
-        var r = ball.getBoundingClientRect();
-        return ((r.top + r.height / 2) - box.top) / box.height * 100;
-      }).filter(function (v) { return v !== null; });
+        var visual = stop.querySelector('.journey__visual');
+        var el = visual || stop;
+        var r = el.getBoundingClientRect();
+        return ((r.top + r.height * 0.35) - box.top) / box.height * 100;
+      });
       if (ys.length < 2) return;
 
       var bounds = [Math.max(0, ys[0] - (ys[1] - ys[0]) / 2)];
       for (var i = 1; i < ys.length; i++) bounds.push((ys[i - 1] + ys[i]) / 2);
       bounds.push(Math.min(100, ys[ys.length - 1] + (ys[ys.length - 1] - ys[ys.length - 2]) / 2));
 
-      var d = 'M50 ' + bounds[0].toFixed(1);
+      var d = 'M50 ' + bounds[0].toFixed(2);
       for (var s = 0; s < ys.length; s++) {
         var ext = s % 2 === 0 ? 29 : 71;
         var mid = s % 2 === 0 ? 36 : 64;
-        d += ' C ' + mid + ' ' + (bounds[s] + (ys[s] - bounds[s]) / 3).toFixed(1) +
-             ', ' + ext + ' ' + (bounds[s] + 2 * (ys[s] - bounds[s]) / 3).toFixed(1) +
-             ', ' + ext + ' ' + ys[s].toFixed(1);
-        d += ' C ' + ext + ' ' + (ys[s] + (bounds[s + 1] - ys[s]) / 3).toFixed(1) +
-             ', ' + mid + ' ' + (ys[s] + 2 * (bounds[s + 1] - ys[s]) / 3).toFixed(1) +
-             ', 50 ' + bounds[s + 1].toFixed(1);
+        d += ' C ' + mid + ' ' + (bounds[s] + (ys[s] - bounds[s]) / 3).toFixed(2) +
+             ', ' + ext + ' ' + (bounds[s] + 2 * (ys[s] - bounds[s]) / 3).toFixed(2) +
+             ', ' + ext + ' ' + ys[s].toFixed(2);
+        d += ' C ' + ext + ' ' + (ys[s] + (bounds[s + 1] - ys[s]) / 3).toFixed(2) +
+             ', ' + mid + ' ' + (ys[s] + 2 * (bounds[s + 1] - ys[s]) / 3).toFixed(2) +
+             ', 50 ' + bounds[s + 1].toFixed(2);
       }
       bg.setAttribute('d', d);
       fill.setAttribute('d', d);
+      pathLen = fill.getTotalLength();
+      fill.style.strokeDasharray = String(pathLen);
+      fill.style.strokeDashoffset = String(pathLen * (1 - currentPct));
     }
 
-    function setProgress(pct) {
-      if (!clipRect) return;
+    function applyProgress(pct) {
+      if (!fill || !pathLen) return;
       pct = Math.max(0, Math.min(1, pct));
-      // viewBox 0–100: cliphoogte laat paars/oranje pad meegroeien met scroll
-      clipRect.setAttribute('height', String(pct * 100));
+      fill.style.strokeDashoffset = String(pathLen * (1 - pct));
     }
 
     function setFocus(step) {
@@ -114,13 +119,11 @@
       });
     }
 
-    function progressFill() {
-      if (!clipRect || !snake) return;
-      // Inkleuring volgt de focuslijn door het SVG-pad (niet alleen bol 1→4)
+    function readTargetPct() {
+      if (!snake) return 0;
       var rect = snake.getBoundingClientRect();
       var focusY = window.innerHeight * 0.45;
-      var pct = (focusY - rect.top) / Math.max(rect.height, 1);
-      setProgress(pct);
+      return Math.max(0, Math.min(1, (focusY - rect.top) / Math.max(rect.height, 1)));
     }
 
     function focusFromScroll() {
@@ -140,37 +143,62 @@
         }
       });
       setFocus(best);
-      progressFill();
+      targetPct = readTargetPct();
+      if (!smoothing) {
+        smoothing = true;
+        window.requestAnimationFrame(smoothTick);
+      }
+    }
+
+    function smoothTick() {
+      var diff = targetPct - currentPct;
+      if (Math.abs(diff) < 0.0005) {
+        currentPct = targetPct;
+        applyProgress(currentPct);
+        smoothing = false;
+        return;
+      }
+      // Lichte lerp → vloeiende lijn zonder haperen
+      currentPct += diff * 0.14;
+      applyProgress(currentPct);
+      window.requestAnimationFrame(smoothTick);
+    }
+
+    function scheduleFit() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(function () {
+        fitPath();
+        targetPct = readTargetPct();
+        currentPct = targetPct;
+        applyProgress(currentPct);
+        focusFromScroll();
+      }, 80);
     }
 
     fitPath();
-    window.addEventListener('load', fitPath);
-    window.addEventListener('resize', function () { window.requestAnimationFrame(fitPath); });
-    if ('ResizeObserver' in window) {
-      // Volgt ook hoogteveranderingen door tekst-omloop, fonts en afbeeldingen
-      new ResizeObserver(function () { window.requestAnimationFrame(fitPath); }).observe(root);
-    }
+    window.addEventListener('load', function () {
+      fitPath();
+      focusFromScroll();
+    });
+    window.addEventListener('resize', scheduleFit);
 
     if (reduceMotion) {
       stops.forEach(function (s) { s.classList.add('is-focus', 'is-done'); });
-      setProgress(1);
+      currentPct = 1;
+      applyProgress(1);
       return;
     }
 
-    setProgress(0);
-
     var ticking = false;
-    function onScroll() {
+    window.addEventListener('scroll', function () {
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(function () {
         focusFromScroll();
         ticking = false;
       });
-    }
+    }, { passive: true });
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', focusFromScroll);
     focusFromScroll();
   })();
 })();

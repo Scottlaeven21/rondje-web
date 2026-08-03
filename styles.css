@@ -617,10 +617,15 @@ img { display: block; max-width: 100%; }
   fill: none;
   stroke-width: 10;
   stroke-linecap: round;
+  stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
 .journey__snake-bg { stroke: #E9D5FF; }
-.journey__snake-fill { stroke: url(#journeyGrad); }
+.journey__snake-fill {
+  stroke: url(#journeyGrad);
+  /* Voortgang via JS (dashoffset + lerp), geen CSS-transition die hapert */
+  will-change: stroke-dashoffset;
+}
 
 .journey__stops {
   list-style: none;
