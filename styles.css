@@ -1140,8 +1140,25 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 620px) {
-  .audiences__grid, .features__grid, .quotes__grid, .why__grid { grid-template-columns: 1fr; }
-  .chatdemo { grid-template-columns: 1fr; }
+  .audiences__grid, .features__grid, .quotes__grid { grid-template-columns: 1fr; }
+  /* Waarom-kaartjes + WhatsApp-demo: 2 naast elkaar op mobiel */
+  .why__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .why-card { padding: 16px 12px; }
+  .why-card__icon { width: 42px; height: 42px; border-radius: 12px; margin-bottom: 10px; }
+  .why-card__icon img { width: 22px; height: 22px; }
+  .why-card h3 { font-size: .95rem; }
+  .why-card p { font-size: .82rem; line-height: 1.5; }
+  .chatdemo {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .chatdemo__panel { padding: 14px 10px; }
+  .chatdemo__label { font-size: .72rem; }
+  .bubble { font-size: .78rem; padding: 8px 10px; }
   /* Veiligheid-sectie: kleiner schild en strakkere afstanden */
   .secure__inner { gap: 30px; }
   .secure__list li { font-size: .98rem; align-items: flex-start; }
