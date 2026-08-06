@@ -42,7 +42,7 @@
       <div class="container container--narrow">
         <div class="legal__section">
           <h2>1. Wie zijn wij?</h2>
-          <p>Rondje is een dienst van LaevenIT-services (eenmanszaak, handelsnaam Rondje), gevestigd in Nederland. Wij bieden een app waarmee gebruikers gezamenlijke uitgaven kunnen bijhouden en verrekenen via SEPA-incasso.</p>
+          <p>Rondje is een dienst van LaevenIT-services (eenmanszaak, handelsnaam Rondje), gevestigd in Nederland. Wij bieden een app waarmee gebruikers gezamenlijke uitgaven kunnen bijhouden en verrekenen via SEPA-incasso, iDEAL, kaart of Klarna.</p>
           <p>Vragen over dit beleid? Mail ons op <a href="mailto:contact@laevenitservices.nl">contact@laevenitservices.nl</a>.</p>
         </div>
 
@@ -51,6 +51,7 @@
           <ul>
             <li>Naam, e-mailadres en telefoonnummer bij registratie.</li>
             <li>IBAN en bankrekeninggegevens voor SEPA-incasso (opgeslagen bij onze betaalpartner).</li>
+            <li>Betaalmethode-keuze en gegevens die nodig zijn voor iDEAL, kaart of Klarna (verwerkt via Stripe / Klarna).</li>
             <li>Profielfoto als je deze uploadt (optioneel).</li>
             <li>Foto's van bonnetjes die je toevoegt aan rondjes.</li>
             <li>Groepslidmaatschappen en rondjes (uitgaven, splits, betalingen).</li>
@@ -63,7 +64,7 @@
         <div class="legal__section">
           <h2>3. Waarvoor gebruiken wij jouw gegevens?</h2>
           <ul>
-            <li>Het verwerken en verrekenen van rondjes via SEPA-incasso.</li>
+            <li>Het verwerken en verrekenen van rondjes via SEPA-incasso, iDEAL, kaart of Klarna.</li>
             <li>Communicatie over jouw account en transacties.</li>
             <li>Het sturen van push-notificaties over nieuwe rondjes, betalingen en chats.</li>
             <li>Fraudepreventie en beveiliging van onze dienst.</li>
@@ -85,7 +86,8 @@
           <h2>5. Gegevens delen met derden</h2>
           <p>Wij verkopen jouw gegevens nooit. Wij delen gegevens uitsluitend met:</p>
           <ul>
-            <li><strong>Onze betaaldienstverlener</strong> — voor SEPA-incasso en betaalverwerking.</li>
+            <li><strong>Onze betaaldienstverlener (Stripe)</strong> — voor SEPA-incasso, iDEAL, kaart en Klarna.</li>
+            <li><strong>Klarna</strong> — wanneer je “Betaal later” kiest; Klarna verwerkt dan jouw betaalgegevens volgens hun privacybeleid.</li>
             <li><strong>Supabase</strong> — voor opslag van mediabestanden (bonnetjes, profielfoto's).</li>
             <li><strong>Railway</strong> — voor hosting van onze backend (EU-servers).</li>
             <li><strong>OpenAI</strong> — voor bonnetje-scanning (alleen de afbeelding, geen andere persoonsdata).</li>

@@ -269,6 +269,8 @@ img { display: block; max-width: 100%; }
 }
 .dot--ideal { background: #FFEFEA; color: #EB5B25; }
 .dot--sepa { background: #E7F0FF; color: #1F5FBF; }
+.dot--klarna { background: #FFE8F1; color: #C8102E; }
+.chip--later { background: #FFE8F1; color: #9F1239; }
 
 /* Sier-blobs achter de telefoon */
 .hero__visual { position: relative; display: flex; justify-content: center; }
