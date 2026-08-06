@@ -65,6 +65,60 @@
     var targetPct = 0;
     var smoothing = false;
     var resizeTimer = 0;
+    // Fracties langs de echte padlengte per stop (niet lineair in Y —
+    // op desktop is het zigzag-pad langer dan de verticale afstand).
+    var stopPathPcts = [];
+    var stopMidsY = [];
+
+    function nearestPathPct(targetX, targetY) {
+      if (!fill || !pathLen) return 0;
+      var samples = 240;
+      var bestLen = 0;
+      var bestDist = Infinity;
+      for (var j = 0; j <= samples; j++) {
+        var len = (pathLen * j) / samples;
+        var pt = fill.getPointAtLength(len);
+        var dx = pt.x - targetX;
+        var dy = pt.y - targetY;
+        var d = dx * dx + dy * dy;
+        if (d < bestDist) {
+          bestDist = d;
+          bestLen = len;
+        }
+      }
+      return bestLen / pathLen;
+    }
+
+    function refreshStopMids() {
+      stopMidsY = stops.map(function (stop) {
+        var ball = stop.querySelector('.journey__ball');
+        if (!ball) return 0;
+        var r = ball.getBoundingClientRect();
+        return r.top + r.height / 2;
+      });
+    }
+
+    function cacheStopPathPcts(ys) {
+      if (!fill || !pathLen || !ys || !ys.length) {
+        stopPathPcts = [];
+        return;
+      }
+
+      // Exacte bochtpunten van het pad (viewBox 0–100), niet de geschaalde bol
+      stopPathPcts = ys.map(function (y, s) {
+        var ext = s % 2 === 0 ? 29 : 71;
+        return nearestPathPct(ext, y);
+      });
+
+      // Monotoon oplopend houden (pad gaat altijd naar beneden)
+      for (var i = 1; i < stopPathPcts.length; i++) {
+        if (stopPathPcts[i] < stopPathPcts[i - 1]) {
+          stopPathPcts[i] = stopPathPcts[i - 1];
+        }
+      }
+
+      refreshStopMids();
+    }
 
     // Padvorm vastzetten t.o.v. stops (niet opnieuw bij bol-scale → geen haperen)
     function fitPath() {
@@ -99,6 +153,7 @@
       fill.setAttribute('d', d);
       pathLen = fill.getTotalLength();
       fill.style.strokeDasharray = String(pathLen);
+      cacheStopPathPcts(ys);
       fill.style.strokeDashoffset = String(pathLen * (1 - currentPct));
     }
 
@@ -120,10 +175,36 @@
     }
 
     function readTargetPct() {
-      if (!snake) return 0;
-      var rect = snake.getBoundingClientRect();
+      if (!stopPathPcts.length || !stopMidsY.length) {
+        // Fallback: lineair in Y (werkt goed op mobiel, waar het pad vrij recht is)
+        if (!snake) return 0;
+        var rect = snake.getBoundingClientRect();
+        var focusY = window.innerHeight * 0.45;
+        return Math.max(0, Math.min(1, (focusY - rect.top) / Math.max(rect.height, 1)));
+      }
+
       var focusY = window.innerHeight * 0.45;
-      return Math.max(0, Math.min(1, (focusY - rect.top) / Math.max(rect.height, 1)));
+      var mids = stopMidsY;
+      var pcts = stopPathPcts;
+      var ease = window.innerHeight * 0.55;
+
+      if (focusY <= mids[0]) {
+        var tIn = Math.max(0, Math.min(1, 1 - (mids[0] - focusY) / ease));
+        return tIn * pcts[0];
+      }
+      if (focusY >= mids[mids.length - 1]) {
+        var tOut = Math.max(0, Math.min(1, (focusY - mids[mids.length - 1]) / ease));
+        return pcts[pcts.length - 1] + tOut * (1 - pcts[pcts.length - 1]);
+      }
+
+      for (var i = 0; i < mids.length - 1; i++) {
+        if (focusY >= mids[i] && focusY <= mids[i + 1]) {
+          var span = mids[i + 1] - mids[i];
+          var t = span > 0 ? (focusY - mids[i]) / span : 0;
+          return pcts[i] + t * (pcts[i + 1] - pcts[i]);
+        }
+      }
+      return pcts[pcts.length - 1];
     }
 
     function focusFromScroll() {
@@ -142,6 +223,7 @@
           best = n;
         }
       });
+      refreshStopMids();
       setFocus(best);
       targetPct = readTargetPct();
       if (!smoothing) {
