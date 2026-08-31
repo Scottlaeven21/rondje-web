@@ -2,10 +2,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/join/:code", "destination": "/index.html" },
-    { "source": "/pot/:code", "destination": "/index.html" },
-    { "source": "/group/:id", "destination": "/index.html" },
-    { "source": "/new", "destination": "/index.html" }
+    { "source": "/join/:code", "destination": "/" },
+    { "source": "/pot/:code", "destination": "/" },
+    { "source": "/group/:id", "destination": "/" },
+    { "source": "/new", "destination": "/" }
   ],
   "headers": [
     {
