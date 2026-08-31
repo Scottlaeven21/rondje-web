@@ -34,7 +34,7 @@
     <section class="legal-hero">
       <div class="container container--narrow">
         <h1>Privacybeleid</h1>
-        <p class="updated">Laatst bijgewerkt: 1 april 2025</p>
+        <p class="updated">Laatst bijgewerkt: 12 augustus 2026</p>
       </div>
     </section>
 
@@ -50,7 +50,8 @@
           <h2>2. Welke gegevens verzamelen wij?</h2>
           <ul>
             <li>Naam, e-mailadres en telefoonnummer bij registratie.</li>
-            <li>IBAN en bankrekeninggegevens voor SEPA-incasso (opgeslagen bij onze betaalpartner).</li>
+            <li>Wachtwoord (alleen als beveiligde hash; wij kunnen je wachtwoord niet lezen).</li>
+            <li>IBAN en bankrekeninggegevens voor SEPA-incasso / uitbetalingen (opgeslagen bij onze betaalpartner of versleuteld).</li>
             <li>Betaalmethode-keuze en gegevens die nodig zijn voor iDEAL, kaart of Klarna (verwerkt via Stripe / Klarna).</li>
             <li>Profielfoto als je deze uploadt (optioneel).</li>
             <li>Foto's van bonnetjes die je toevoegt aan rondjes.</li>
@@ -65,6 +66,7 @@
           <h2>3. Waarvoor gebruiken wij jouw gegevens?</h2>
           <ul>
             <li>Het verwerken en verrekenen van rondjes via SEPA-incasso, iDEAL, kaart of Klarna.</li>
+            <li>Accountbeveiliging (wachtwoord + eenmalige SMS/WhatsApp-code).</li>
             <li>Communicatie over jouw account en transacties.</li>
             <li>Het sturen van push-notificaties over nieuwe rondjes, betalingen en chats.</li>
             <li>Fraudepreventie en beveiliging van onze dienst.</li>
@@ -86,8 +88,9 @@
           <h2>5. Gegevens delen met derden</h2>
           <p>Wij verkopen jouw gegevens nooit. Wij delen gegevens uitsluitend met:</p>
           <ul>
-            <li><strong>Onze betaaldienstverlener (Stripe)</strong> — voor SEPA-incasso, iDEAL, kaart en Klarna.</li>
+            <li><strong>Stripe</strong> — voor SEPA-incasso, iDEAL, kaart, Klarna en uitbetalingen.</li>
             <li><strong>Klarna</strong> — wanneer je “Betaal later” kiest; Klarna verwerkt dan jouw betaalgegevens volgens hun privacybeleid.</li>
+            <li><strong>Twilio</strong> — voor het versturen van SMS- en WhatsApp-verificatiecodes.</li>
             <li><strong>Supabase</strong> — voor opslag van mediabestanden (bonnetjes, profielfoto's).</li>
             <li><strong>Railway</strong> — voor hosting van onze backend (EU-servers).</li>
             <li><strong>OpenAI</strong> — voor bonnetje-scanning (alleen de afbeelding, geen andere persoonsdata).</li>
@@ -126,7 +129,7 @@
 
         <div class="legal__section">
           <h2>9. Beveiliging</h2>
-          <p>Wij gebruiken TLS-encryptie voor alle dataoverdracht. Wachtwoorden worden nooit opgeslagen — login verloopt via eenmalige OTP-codes per SMS. Gevoelige data (zoals tokens) worden versleuteld opgeslagen op je apparaat via iOS Secure Enclave / Android Keystore.</p>
+          <p>Wij gebruiken TLS-encryptie voor alle dataoverdracht. Wachtwoorden worden alleen als cryptografische hash opgeslagen (niet in leesbare vorm). Inloggen gebeurt met wachtwoord plus een eenmalige verificatiecode via SMS of WhatsApp. Gevoelige data (zoals sessietokens) worden versleuteld opgeslagen op je apparaat via iOS Secure Enclave / Android Keystore. Optioneel kun je de app vergrendelen met Face ID / biometrie.</p>
         </div>
 
         <div class="legal__section">

@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "VUL_APPLE_TEAM_ID.nl.rondje.app",
+        "paths": [
+          "/join/*",
+          "/group/*",
+          "/new",
+          "/new/*",
+          "/pot/*"
+        ]
+      }
+    ]
+  }
+}
