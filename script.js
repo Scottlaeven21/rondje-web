@@ -98,15 +98,15 @@
       });
     }
 
-    function cacheStopPathPcts(ys) {
+    function cacheStopPathPcts(ys, width) {
       if (!fill || !pathLen || !ys || !ys.length) {
         stopPathPcts = [];
         return;
       }
 
-      // Exacte bochtpunten van het pad (viewBox 0–100), niet de geschaalde bol
+      // Exacte bochtpunten van het pad (in pixels), niet de geschaalde bol
       stopPathPcts = ys.map(function (y, s) {
-        var ext = s % 2 === 0 ? 29 : 71;
+        var ext = width * (s % 2 === 0 ? 0.29 : 0.71);
         return nearestPathPct(ext, y);
       });
 
@@ -124,36 +124,45 @@
     function fitPath() {
       if (!snake || !bg || !fill) return;
       var box = snake.getBoundingClientRect();
-      if (box.height < 10) return;
+      if (box.height < 10 || box.width < 10) return;
+
+      // De viewBox loopt gelijk met de werkelijke pixelmaat. Zo is de schaal in
+      // beide richtingen 1, en is de dashlengte van de voortgang dus dezelfde
+      // eenheid als de lijn die je ziet. Rekten we een vaste viewBox van 100
+      // uit, dan herhaalde het streeppatroon zich over de lijn — de "bubbels".
+      var w = box.width;
+      var h = box.height;
+      snake.setAttribute('viewBox', '0 0 ' + w.toFixed(1) + ' ' + h.toFixed(1));
 
       var ys = stops.map(function (stop) {
         var visual = stop.querySelector('.journey__visual');
         var el = visual || stop;
         var r = el.getBoundingClientRect();
-        return ((r.top + r.height * 0.35) - box.top) / box.height * 100;
+        return (r.top + r.height * 0.35) - box.top;
       });
       if (ys.length < 2) return;
 
       var bounds = [Math.max(0, ys[0] - (ys[1] - ys[0]) / 2)];
       for (var i = 1; i < ys.length; i++) bounds.push((ys[i - 1] + ys[i]) / 2);
-      bounds.push(Math.min(100, ys[ys.length - 1] + (ys[ys.length - 1] - ys[ys.length - 2]) / 2));
+      bounds.push(Math.min(h, ys[ys.length - 1] + (ys[ys.length - 1] - ys[ys.length - 2]) / 2));
 
-      var d = 'M50 ' + bounds[0].toFixed(2);
+      var cx = w * 0.5;
+      var d = 'M' + cx.toFixed(1) + ' ' + bounds[0].toFixed(1);
       for (var s = 0; s < ys.length; s++) {
-        var ext = s % 2 === 0 ? 29 : 71;
-        var mid = s % 2 === 0 ? 36 : 64;
-        d += ' C ' + mid + ' ' + (bounds[s] + (ys[s] - bounds[s]) / 3).toFixed(2) +
-             ', ' + ext + ' ' + (bounds[s] + 2 * (ys[s] - bounds[s]) / 3).toFixed(2) +
-             ', ' + ext + ' ' + ys[s].toFixed(2);
-        d += ' C ' + ext + ' ' + (ys[s] + (bounds[s + 1] - ys[s]) / 3).toFixed(2) +
-             ', ' + mid + ' ' + (ys[s] + 2 * (bounds[s + 1] - ys[s]) / 3).toFixed(2) +
-             ', 50 ' + bounds[s + 1].toFixed(2);
+        var ext = (w * (s % 2 === 0 ? 0.29 : 0.71)).toFixed(1);
+        var mid = (w * (s % 2 === 0 ? 0.36 : 0.64)).toFixed(1);
+        d += ' C ' + mid + ' ' + (bounds[s] + (ys[s] - bounds[s]) / 3).toFixed(1) +
+             ', ' + ext + ' ' + (bounds[s] + 2 * (ys[s] - bounds[s]) / 3).toFixed(1) +
+             ', ' + ext + ' ' + ys[s].toFixed(1);
+        d += ' C ' + ext + ' ' + (ys[s] + (bounds[s + 1] - ys[s]) / 3).toFixed(1) +
+             ', ' + mid + ' ' + (ys[s] + 2 * (bounds[s + 1] - ys[s]) / 3).toFixed(1) +
+             ', ' + cx.toFixed(1) + ' ' + bounds[s + 1].toFixed(1);
       }
       bg.setAttribute('d', d);
       fill.setAttribute('d', d);
       pathLen = fill.getTotalLength();
       fill.style.strokeDasharray = String(pathLen);
-      cacheStopPathPcts(ys);
+      cacheStopPathPcts(ys, w);
       fill.style.strokeDashoffset = String(pathLen * (1 - currentPct));
     }
 
