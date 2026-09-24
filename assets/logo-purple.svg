@@ -1,20 +1,34 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rondje logo wit op paars">
-  <rect x="4" y="4" width="120" height="120" rx="30" fill="#7C3AED"/>
+  <defs>
+    <linearGradient id="lijnLichtP" x1="22" y1="16" x2="108" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.42" stop-color="#FFF9F8"/>
+      <stop offset="1" stop-color="#E8DEE2"/>
+    </linearGradient>
+    <g id="glazenP" stroke-linejoin="round" stroke-linecap="round" fill="none">
+      <g transform="rotate(11 44 84)">
+        <path d="M33 44 H55 L52 84 H36 Z"/>
+        <path d="M37.5 66 H50.5"/>
+      </g>
+      <g transform="rotate(-11 84 84)">
+        <path d="M73 44 H95 L92 84 H76 Z"/>
+        <path d="M77.5 66 H90.5"/>
+      </g>
+      <path d="M64 30 V20"/>
+      <path d="M52 33 L46 25"/>
+      <path d="M76 33 L82 25"/>
+    </g>
+  </defs>
 
-  <!-- Klinkende glazen, wit -->
-  <g stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
-    <g transform="rotate(-13 50 84)">
-      <path d="M37 44 H63 L59 84 H41 Z" fill="rgba(255,255,255,0.22)"/>
-      <path d="M40 66 H60" stroke-width="5"/>
-    </g>
-    <g transform="rotate(13 78 84)">
-      <path d="M65 44 H91 L87 84 H69 Z" fill="rgba(255,255,255,0.22)"/>
-      <path d="M68 66 H88" stroke-width="5"/>
-    </g>
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="#7C3AED"/>
+  <use href="#glazenP" transform="translate(1.8 2.6)" stroke="#2E1065" stroke-width="5" opacity="0.28"/>
+  <use href="#glazenP" transform="translate(0.7 1)" stroke="#D0C0C4" stroke-width="5"/>
+  <g transform="rotate(11 44 84)">
+    <path d="M33 44 H55 L52 84 H36 Z" fill="rgba(255,255,255,0.22)"/>
   </g>
-  <g stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round">
-    <path d="M64 30 V20"/>
-    <path d="M52 33 L46 25"/>
-    <path d="M76 33 L82 25"/>
+  <g transform="rotate(-11 84 84)">
+    <path d="M73 44 H95 L92 84 H76 Z" fill="rgba(255,255,255,0.22)"/>
   </g>
+  <use href="#glazenP" stroke="url(#lijnLichtP)" stroke-width="5"/>
+  <use href="#glazenP" transform="translate(-0.5 -0.65)" stroke="#FFFFFF" stroke-width="2.1"/>
 </svg>

@@ -304,9 +304,9 @@ img { display: block; max-width: 100%; }
 .app__title { font-size: 1.15rem; font-weight: 800; }
 .app__avatar {
   width: 42px; height: 42px; border-radius: 14px;
-  background: var(--grad-soft); display: grid; place-items: center;
+  overflow: hidden; display: grid; place-items: center;
 }
-.app__avatar img { display: block; }
+.app__avatar img { display: block; width: 100%; height: 100%; }
 .app__amount {
   background: var(--grad);
   color: #fff;
@@ -740,6 +740,17 @@ img { display: block; max-width: 100%; }
   filter: brightness(0) invert(1);
   transition: opacity .3s ease;
 }
+.journey__ball--logo {
+  background: none;
+  overflow: hidden;
+  box-shadow: none;
+}
+.journey__ball--logo img {
+  width: 100%;
+  height: 100%;
+  filter: none;
+  border-radius: 28px;
+}
 .journey__num {
   position: absolute;
   top: -4px;
@@ -864,7 +875,7 @@ img { display: block; max-width: 100%; }
   font-weight: 700;
   color: var(--purple-dk);
 }
-.path__tags li img { display: block; width: 14px; height: 14px; }
+.path__tags li img { display: block; width: 14px; height: 14px; border-radius: 4px; }
 .path__tags li:nth-child(2) {
   background: #FFEDD5;
   border-color: #FED7AA;
@@ -899,6 +910,7 @@ img { display: block; max-width: 100%; }
   .journey__copy h3 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
   .journey__ball { width: 80px; height: 80px; }
   .journey__ball img { width: 30px; height: 30px; }
+  .journey__ball--logo img { width: 100%; height: 100%; border-radius: 22px; }
   .journey__snake { opacity: .72; }
   .journey__snake-bg,
   .journey__snake-fill { stroke-width: 12; }
@@ -995,6 +1007,15 @@ img { display: block; max-width: 100%; }
 }
 .shield img { display: block; width: 96px; height: 96px; }
 @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+/* ─────────────────────────  HELE AVOND  ───────────────────────── */
+.evening { padding: clamp(60px, 9vw, 110px) 0; background: var(--bg-lilac); }
+.evening__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 48px;
+}
 
 /* ─────────────────────────  FAQ  ───────────────────────── */
 .faq { padding: clamp(60px, 9vw, 110px) 0; }
@@ -1132,7 +1153,7 @@ img { display: block; max-width: 100%; }
      uitgelijnd zodat de vinkjes netjes onder elkaar staan. */
   .secure__list { max-width: 420px; margin-inline: auto; text-align: left; }
   .secure__list li { justify-content: flex-start; }
-  .audiences__grid, .features__grid, .quotes__grid, .why__grid { grid-template-columns: repeat(2, 1fr); }
+  .audiences__grid, .features__grid, .quotes__grid, .why__grid, .evening__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 760px) {
@@ -1148,7 +1169,7 @@ img { display: block; max-width: 100%; }
 @media (max-width: 620px) {
   .quotes__grid { grid-template-columns: 1fr; }
   /* Voor wie + Waarom + Wat erbij + WhatsApp-demo: 2 naast elkaar op mobiel */
-  .features__grid {
+  .features__grid, .evening__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-top: 28px;

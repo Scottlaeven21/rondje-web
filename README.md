@@ -41,8 +41,8 @@ De site is volledig statisch, dus te hosten op elke statische host:
 
 ## Nog te doen / aandachtspunten
 
-- **App Store / Google Play links**: de download-knoppen wijzen nu naar `#`.
-  Vervang de `href="#"` in `index.html` zodra de store-URL's bekend zijn.
+- **App Store**: download-knoppen gaan naar `https://apps.apple.com/nl/app/rondje-kosten-delen/id6807414308`.
+  Google Play blijft `#` tot de Android-listing live is.
 - **/privacy en /terms**: footer linkt hiernaartoe — voeg die pagina's toe
   (of hergebruik de teksten uit de app: `PrivacyPolicyScreen` / `TermsScreen`).
 - **Contact-e-mail**: staat op `hallo@rond-je.nl` — pas aan indien anders.
