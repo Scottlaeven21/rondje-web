@@ -1143,7 +1143,7 @@ img { display: block; max-width: 100%; }
   .hero .pill--icon { justify-self: center; }
   .hero__visual { order: 1; margin-top: 28px; }
   .hero__cta { order: 2; margin-top: 22px; gap: 10px; }
-  .hero__trust { order: 3; margin-top: 6px; gap: 8px; }
+  .hero__trust { order: 3; margin-top: 20px; gap: 8px; }
   /* Titel + ondertitel strakker op mobiel */
   .hero__title { margin: 14px 0 12px; letter-spacing: -1.6px; }
   .hero__sub { margin-inline: auto; margin-top: 0; line-height: 1.4; }
