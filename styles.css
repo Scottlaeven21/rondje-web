@@ -990,6 +990,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 48px;
 }
+.secure .pill { margin-bottom: 16px; }
 .secure__list { list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 14px; }
 .secure__list li { display: flex; align-items: center; gap: 12px; font-size: 1.05rem; color: var(--ink-soft); }
 .secure__list strong { color: var(--ink); }
