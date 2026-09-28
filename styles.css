@@ -742,7 +742,7 @@ img { display: block; max-width: 100%; }
 }
 .journey__ball--logo {
   background: none;
-  overflow: hidden;
+  border-radius: 28px;
   box-shadow: none;
 }
 .journey__ball--logo img {
@@ -910,6 +910,7 @@ img { display: block; max-width: 100%; }
   .journey__copy h3 { font-size: clamp(1.7rem, 8vw, 2.2rem); }
   .journey__ball { width: 80px; height: 80px; }
   .journey__ball img { width: 30px; height: 30px; }
+  .journey__ball--logo { border-radius: 22px; }
   .journey__ball--logo img { width: 100%; height: 100%; border-radius: 22px; }
   .journey__snake { opacity: .72; }
   .journey__snake-bg,
